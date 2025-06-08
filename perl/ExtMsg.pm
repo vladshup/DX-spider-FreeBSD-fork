@@ -196,7 +196,7 @@ sub new_client {
 				$conn->_send_file("$main::data/issue");
 				$conn->send_raw("login: ");
 				$conn->_dotimeout(60);
-				$conn->{echo} = 1;
+				$conn->{echo} = 0; #changed for FreeBSD
 			} else { 
 				&{$conn->{eproc}}() if $conn->{eproc};
 				$conn->disconnect();

@@ -14,7 +14,7 @@ use vars qw(@listen);
 
 @listen = (
 # remove the '#' character from the next line to enable the listener!
-  #		   ["0.0.0.0", 7300],
+		["0.0.0.0", 7300],
 # ^
 # |
 # This one!!!!!

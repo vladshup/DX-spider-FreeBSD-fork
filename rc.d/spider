@@ -1,0 +1,62 @@
+#!/bin/sh
+# PROVIDE: spider
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+
+. /etc/rc.subr
+
+name="spider"
+rcvar="${name}_enable"
+
+# Конфигурационные параметры
+script="/spider/perl/cluster.pl"
+perl_bin="/usr/local/bin/perl"
+user="sysop"
+pidfile="/var/run/${name}.pid"
+logfile="/var/log/spider.log"
+
+# Команда запуска через daemon
+command="/usr/sbin/daemon"
+command_args="-r -P ${pidfile} -u ${user} -o ${logfile} ${perl_bin} ${script}"
+
+# Проверка необходимых компонентов перед запуском
+validate_cmd="spider_validate"
+spider_validate() {
+    # Проверка доступности Perl
+    if [ ! -x "${perl_bin}" ]; then
+        err "Perl binary not found or not executable: ${perl_bin}"
+        return 1
+    fi
+
+    # Проверка существования скрипта
+    if [ ! -f "${script}" ]; then
+        err "Main script not found: ${script}"
+        return 1
+    fi
+    
+    # Проверка существования пользователя
+    if ! pw usershow ${user} >/dev/null 2>&1; then
+        err "System user does not exist: ${user}"
+        return 1
+    fi
+    
+    return 0
+}
+
+# Действия перед запуском сервиса
+start_precmd="spider_prestart"
+spider_prestart() {
+    # Создаем pid-файл с правильными правами
+    install -o ${user} -m 0644 /dev/null ${pidfile}
+    
+    # Создаем лог-файл если не существует
+    if [ ! -e "${logfile}" ]; then
+        touch "${logfile}"
+        chown ${user} "${logfile}"
+        chmod 644 "${logfile}"
+    fi
+}
+
+# Настройки rc.subr
+load_rc_config $name
+run_rc_command "$@"
