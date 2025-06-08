@@ -14,11 +14,11 @@ Using Git is quite easy, if you are on a Linux/Unix box. Most distributions have
 Once you have git installed then to use it with an existing spider tree do (for FreeBSD/unix users):-
 
 login as the sysop user
-#git clone https://github.com/vladshup/DX-spider-FreeBSD-fork.git spider.new
-#sudo cp -a spider.new /spider
-#rm -rf spider.new
-#cd /spider
-#git reset --hard
+ #git clone https://github.com/vladshup/DX-spider-FreeBSD-fork.git spider.new
+ #sudo cp -a spider.new /spider
+ #rm -rf spider.new
+ #cd /spider
+ #git reset --hard
 
 Next time 
 
@@ -30,7 +30,7 @@ spider_enable="YES"
 
 Also we need to make symlink for perl
 
-# ln -s /usr/local/bin/perl /usr/bin/perl
+ # ln -s /usr/local/bin/perl /usr/bin/perl
 
 
 
