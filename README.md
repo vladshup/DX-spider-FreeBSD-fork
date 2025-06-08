@@ -1,4 +1,4 @@
-This is a good known G1TLH DX-spider software http://www.dxcluster.org litle beat adapted for FreeBSD operating system.
+This is a good known G1TLH DX-spider software http://www.dxcluster.org adapted for FreeBSD operating system.
 
 I use FreeBSD 14.2 with perl (v5.36.3). 
 
