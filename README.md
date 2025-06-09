@@ -1,6 +1,7 @@
-This is a good known G1TLH DX-spider software http://www.dxcluster.org adapted for FreeBSD operating system.
+This is a good known G1TLH DX-Spider software http://www.dxcluster.org adapted for FreeBSD operating system.S
 
 I use FreeBSD 14.2 with perl (v5.36.3). 
+Please remember FreeBSD is not Linux. FreeBSD not consist support for AX.25, netrom, rose etc protocols in kernel. This version of DX-Spider for tcp/ip telnet nodes only.
 
 Installation
 Just use Git
